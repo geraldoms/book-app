@@ -1,9 +1,6 @@
 package com.example.bookapp.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -43,10 +40,24 @@ public class Book extends AuditModel {
     @Temporal(TemporalType.DATE)
     private Date publishingDate;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })
     @JoinTable(name = "AUTHOR_BOOK", joinColumns = { @JoinColumn(name = "BOOK_ID") }, inverseJoinColumns = {
         @JoinColumn(name = "AUTHOR_ID") })
     private Set<Author> authors = new HashSet<>();
+
+    public Book() {
+
+    }
+
+    public Book(Long id, String title, int version, Double price, Date publishingDate, Set<Author> authors) {
+
+        this.id = id;
+        this.title = title;
+        this.version = version;
+        this.price = price;
+        this.publishingDate = publishingDate;
+        this.authors = authors;
+    }
 
     public Long getId() {
 

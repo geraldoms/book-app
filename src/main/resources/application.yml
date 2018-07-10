@@ -1,4 +1,19 @@
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.springframework.web: DEBUG
+
 spring:
+  profiles:
+    active: prod
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+---
+
+spring:
+  profiles: prod
   datasource:
     url: jdbc:mysql://localhost:3306/db_books?useSSL=false
     username: book-user
@@ -7,10 +22,29 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: none
+        ddl-auto: none
 
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.springframework.web: DEBUG
+---
+
+spring:
+  profiles: test
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:db_books;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+flyway:
+  url: jdbc:h2:mem:db_books;MODE=MySQL
+  user: sa
+  password:
+  baseline-on-migrate: true
