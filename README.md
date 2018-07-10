@@ -21,7 +21,7 @@ database `db_books` and the user have been successfully created.
 
 After running the command above (in the installation section), a jar file should be in the `target` folder. Run the command below using that jar file.   
  
-`java -jar target/student-app-0.0.1-SNAPSHOT.jar`
+`jar -jar target/book-app-0.0.1-SNAPSHOT.jar`
 
 ## Running the tests
 
