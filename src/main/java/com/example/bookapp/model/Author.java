@@ -38,6 +38,18 @@ public class Author extends AuditModel {
     @ManyToMany(mappedBy = "authors")
     Set<Book> books = new HashSet<>();
 
+    public Author() {
+
+    }
+
+    public Author(Long id, String firstName, String lastName, Set<Book> books) {
+
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.books = books;
+    }
+
     public Long getId() {
 
         return id;

@@ -43,8 +43,7 @@ public class BookController {
     @GetMapping("/{id}/authors")
     public List<Author> findAllAuthorsByBook(@PathVariable Long id) {
 
-        return new ArrayList<>(repository.getOne(id)
-                                         .getAuthors());
+        return new ArrayList<>(findOne(id).getAuthors());
     }
 
     @PostMapping
@@ -58,8 +57,7 @@ public class BookController {
 
         Book book = findOne(id);
         repository.delete(book);
-        return ResponseEntity.ok()
-                             .build();
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
