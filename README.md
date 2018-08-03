@@ -4,20 +4,20 @@
 
 This is a basic example of web application using Spring Boot 2. 
 The app uses the MySQL database for storage and the Flyway tool for the database migration. 
-It provides some Restful APIs to access the information related to the Book and Author, a ManyToMany relationship. For the integration tests, an embedded H2 (in-memory) database is being used.   
+It provides some RESTful APIs to access the information related to the Book and Author, a ManyToMany relationship. For the integration tests, an embedded H2 (in-memory) database is being used.   
 
 ## Requirements
 * MySQL 5.6 or later
 * JDK 8 or later
-* Maven 3.2+
+* Maven 3.2 or later
 
 ## Installation 
 `$ mvn package`
 
 ## Usage
 
-Make sure that the MySQL server is running and the 
-database `db_books` and the user have been successfully created. 
+Make sure that the MySQL server is running, and the 
+database `db_books` and the user (`book-user`) have been successfully created. 
 
 After running the command above (in the installation section), a jar file should be in the `target` folder. Run the command below using that jar file.   
  
